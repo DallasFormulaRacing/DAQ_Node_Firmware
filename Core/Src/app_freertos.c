@@ -214,24 +214,7 @@ void Start_rpmEvalTask(void *argument)
 	        HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
 	      }
 	    }
-	    // Wait until flag set by ISR
-		/*
-	    uint32_t flags = osEventFlagsWait(rpmEventHandle, 0x01U,
-	                                      osFlagsWaitAny, osWaitForever);
 
-	    if (flags & 0x01U)
-	    {
-	        float dt_ms = rpm_dt;
-	        if (dt_ms > 0)
-	        {
-	            rpm_instantaneous = 60000.0f / dt_ms;
-	            const float alpha = 0.6f;
-	            rpm_current = (rpm_current == 0.0f)
-	                        ? rpm_instantaneous
-	                        : (alpha * rpm_instantaneous + (1.0f - alpha) * rpm_current);
-	        }
-	    }
-	    */
 	}
   /* USER CODE END rpmEvalTask */
 }

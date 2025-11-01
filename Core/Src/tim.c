@@ -173,7 +173,7 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 				__HAL_TIM_SET_COUNTER(htim, 0);  // reset the counter
 				Is_First_Captured = 0; // set it back to false
 			}
-			if (osMessageQueuePut(wheelSpeedFrequencyHandle, &frequency, 100, osWaitForever) != osOK)
+			if (osMessageQueuePut(wheelSpeedFrequencyHandle, &frequency, 0, 0) != osOK)
 			{
 			Error_Handler();
 			}
