@@ -58,6 +58,7 @@ FDCAN_RxHeaderTypeDef FDCAN2_RxHeader;
 uint8_t FDCAN2_txMessageData[16]; //set to 16 bytes for now
 uint8_t FDCAN2_rxMessageData[64];
 NodeDataTypeDef nodeData;
+float wheelSpeedQueueMsg = 0;
 /*
 volatile float rpm_current = 0.0f;         // EMA RPM
 volatile float rpm_instantaneous = 0.0f;
@@ -170,7 +171,7 @@ void Start_canfdTXTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-	configureFDCANTransmissionHeader(&FDCAN2_TxHeader,canfd_message_extended_id,FDCAN_DLC_BYTES_16); //16 byte data size
+	  configureFDCANTransmissionHeader(&FDCAN2_TxHeader,canfd_message_extended_id,FDCAN_DLC_BYTES_16); //16 byte data size
 	  osMutexAcquire(nodeDataMutexHandle,osWaitForever);
 	  memcpy(FDCAN2_txMessageData, &nodeData, sizeof(NodeDataTypeDef));
 	  osMutexRelease(nodeDataMutexHandle);
@@ -193,7 +194,7 @@ void Start_canfdTXTask(void *argument)
 void Start_rpmEvalTask(void *argument)
 {
   /* USER CODE BEGIN rpmEvalTask */
-	float wheelSpeedQueueMsg = 0;
+
   /* Infinite loop */
 	for (;;)
 	{
