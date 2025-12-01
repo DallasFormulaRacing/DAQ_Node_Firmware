@@ -1,3 +1,0 @@
-../Core/Src/app_freertos.c:107:6:MX_FREERTOS_Init	8	static
-../Core/Src/app_freertos.c:164:6:Start_canfdTXTask	32	static
-../Core/Src/app_freertos.c:193:6:Start_rpmEvalTask	24	static
