@@ -58,6 +58,7 @@ FDCAN_RxHeaderTypeDef FDCAN2_RxHeader;
 uint8_t FDCAN2_txMessageData[16]; //set to 16 bytes for now
 uint8_t FDCAN2_rxMessageData[64];
 NodeDataTypeDef nodeData;
+float wheelSpeedQueueMsg = 0;
 /*
 volatile float rpm_current = 0.0f;         // EMA RPM
 volatile float rpm_instantaneous = 0.0f;
@@ -193,7 +194,7 @@ void Start_canfdTXTask(void *argument)
 void Start_rpmEvalTask(void *argument)
 {
   /* USER CODE BEGIN rpmEvalTask */
-	float wheelSpeedQueueMsg = 0;
+
   /* Infinite loop */
 	for (;;)
 	{
